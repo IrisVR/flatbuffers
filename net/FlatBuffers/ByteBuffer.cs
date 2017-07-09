@@ -38,7 +38,7 @@ namespace FlatBuffers
     /// </summary>
     public class ByteBuffer
     {
-        private readonly byte[] _buffer;
+        private byte[] _buffer;
         private int _pos;  // Must track start of the buffer.
 
         public int Length { get { return _buffer.Length; } }
@@ -61,6 +61,12 @@ namespace FlatBuffers
         public void Reset()
         {
             _pos = 0;
+        }
+
+        public void Reset(byte[] buffer)
+        {
+            Reset();
+            _buffer = buffer;
         }
 
         // Pre-allocated helper arrays for convertion.
